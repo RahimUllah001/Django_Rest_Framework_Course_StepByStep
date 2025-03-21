@@ -7,3 +7,4 @@ r = requests.get(url = URL)
 data = r.json()
 
 print(data)
+print("new commit")
