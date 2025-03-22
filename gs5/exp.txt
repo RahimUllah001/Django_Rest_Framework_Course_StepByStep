@@ -1,0 +1,2 @@
+How to use Model Serializer
+how to use validator in django and its three types field level object level e class level
