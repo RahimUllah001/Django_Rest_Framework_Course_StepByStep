@@ -1,0 +1,56 @@
+Filtering data by condition
+
+1 type
+but actually we wan there the data show t operson which is creater of that data
+
+2
+
+
+Globally setting the filter data 
+if i wan tglobally iw ll write the belwo code in setting .py inc e and it wll aply to lal views atonce
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+}
+and in view i will nlcuude this line in view only 
+
+filterset_field = ['anyfield']
+and  do search by this way 
+http://127.0.0.1:8000/studentapi/?city=Bannu
+
+
+if i want to do tis  work locally 
+
+i will add this line in views.py
+
+from django_filters.rest_framework import DjangoFilterBackend
+# Create your views here.
+
+and in evry view will add this line ==>     filter_backends = [DjangoFilterBackend]
+
+
+class StudentList(ListAPIView):
+    # queryset = Student.objects.filter(passbywhome="fahim")
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['city']
+    if by two fields
+    filterset_fields = ['city','name']
+
+and od search as 
+http://127.0.0.1:8000/studentapi/?city=Bannu&name=rahim
+
+
+3
+from rest_framework.filters import SearchFilter
+# Create your views here.
+when we want like search or partial search 
+
+class StudentList(ListAPIView):
+    # queryset = Student.objects.filter(passbywhome="fahim")
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
+   filter_backends = [SearchFilter]
+    # search_fields = ['name']  # Partial match this do partial match e.g 'like' conditin in sql 
+    search_fields = ['^name']  # this is regex wheren name start with specific letter
