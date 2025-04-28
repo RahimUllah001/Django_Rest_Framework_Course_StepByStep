@@ -1,0 +1,45 @@
+PAgination
+
+if u  wan tto set it globally writ ethe beow in sttting.py
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS':'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE':5
+}
+
+AND I WE DONOT WANT  TO APPLY IT TO ALL VIEW THEN WE WILL DO IT LOCALY
+
+from rest_framework.pagination import PageNumberPagination,LimitOffsetPagination
+
+class customPage(PageNumberPagination):
+    page_size = 2
+    page_query_param = "p"# normally in querrry parameter it page=somting but we will writ ep=somethig
+    page_size_query_param = 'records'   #THIS IS FOR WE FIVE A WILL TO CLIENT THAT HE MAKE HIS CHOICE IF RECORDS PER PAGE
+    # max_page_size = 7 #no one mean cline tcan abuse the size
+    last_page_strings = 'end'   #bydefault it is last
+
+
+from .custompagination import customPage,customLimitOffset
+# Create your views here.
+
+
+class StudentList(ListAPIView):
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
+    # pagination_class = PageNumberPagination
+     pagination_class = customPage #this is cutomize one paginatin in cutompagination.py file
+   
+
+4
+class customLimitOffset(LimitOffsetPagination):
+    pass
+
+view.py
+class StudentList(ListAPIView):
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
+    # pagination_class = PageNumberPagination
+    # pagination_class = customPage #this is cutomize one paginatin in cutompagination.py file
+    pagination_class = customLimitOffset #this is cutomize one paginatin in cutompagination.py file
+
+how client will search
+   http://127.0.0.1:8000/studentapi/?limit=7&offset=9
