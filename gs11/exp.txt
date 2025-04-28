@@ -1,0 +1,13 @@
+session authentication and permission 
+types
+
+    authentication_classes = [SessionAuthentication]
+    # permission_classes = [IsAuthenticated]
+    # permission_classes = [AllowAny]
+    # permission_classes = [IsAdminUser]
+    # permission_classes = [IsAuthenticatedOrReadOnly]      #this will show data to all means safe requeasts to all and post update create and delete to only authentocated
+    # permission_classes = [DjangoModelPermissions]   #in this case data will show to authenticated users but other options will give it to go to admin side as superuser and will give this permission from backend
+    # permission_classes = [DjangoModelPermissionsOrAnonReadOnly]     #this is the combination of the above two
+    permission_classes = [MyCustomPermission]       #these are my selfmade permison on specific object upto specific level means object level e.g the person whoc create the blog can do crud to it etc
+
+      
