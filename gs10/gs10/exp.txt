@@ -1,0 +1,18 @@
+Great question! Let's break it down so you fully understand why we use ViewSets and how they compare to other approaches like Generic API Views and Function-Based Views (FBVs).
+
+1️⃣ What is a ViewSet?
+A ViewSet in Django REST Framework (DRF) is a way to group related API functionalities (like list, create, retrieve, update, and delete) into a single class instead of defining them separately.
+
+🔹 Without ViewSet: You need to create separate class-based views for each action.
+🔹 With ViewSet: You can handle all operations inside a single class.
+
+
+
+2nd
+
+Model view set
+
+
+3rd 
+
+also in the same project i have done basic authentication means how to authenticte mean password username and Permision class mean who can do what 
