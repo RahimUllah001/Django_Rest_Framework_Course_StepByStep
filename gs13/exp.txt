@@ -1,0 +1,18 @@
+Token authentication in django rest framework
+
+one way to genrerate token is directly creating token in django admin table in token table
+2nd way is in termina by comand e.g python3 manage.py drf_create_token user1
+
+3rd way is by exposing api endpoint 
+we achieve this by addin the below line code to url.py a nd then writting some command in terminal
+from rest_framework.authtoken.views import obtain_auth_token
+urlpatterns = [
+    path("gettoken/",obtain_auth_token)
+]
+
+anf by writning this command in terminal 
+http POST http://127.0.0.1:8000/gettoken/ username="user1" password="Admin@a1"
+
+
+4th way 
+by using signals 
