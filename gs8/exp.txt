@@ -1,0 +1,1 @@
+Generic api views and Mixins in RestFramework 14
