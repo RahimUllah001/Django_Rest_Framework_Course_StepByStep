@@ -1,0 +1,1 @@
+Concrete veiw class in django
