@@ -1,0 +1,14 @@
+    #Throtling means how a cient can make a request in specific time  
+
+
+    for achieving throttling we will write this in settoing.py i we want custom throttling for an y secofi clcas we will make any custom class in seorate file and set time for it in setting .py  like custom attrbute in setting.py and clas in custom_thriottling.py and ue it in view.py
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_THROTTLE_RATES':{
+        'anon': '2/day',
+        'user': '5/day',
+        'custom':'2/minute'
+
+    }
+}
